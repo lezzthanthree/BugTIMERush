@@ -2,7 +2,7 @@
 <map version="1.9" tiledversion="1.9.2" orientation="orthogonal" renderorder="right-down" width="50" height="30" tilewidth="64" tileheight="64" infinite="0" nextlayerid="16" nextobjectid="248">
  <tileset firstgid="1" source="../img/lvl2_bg.tsx"/>
  <tileset firstgid="1501" source="../img/final_tilemap.tsx"/>
- <tileset firstgid="1726" source="E:/DSProject_FINALS_Grid/img/final_tilemap_2.tsx"/>
+ <tileset firstgid="1726" source="../img/final_tilemap_2.tsx"/>
  <layer id="1" name="Background" width="50" height="30">
   <data encoding="csv">
 1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,
