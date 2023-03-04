@@ -2,6 +2,7 @@ from settings import *
 import pygame as pg
 from os import path
 import time
+
 game_folder = ""
 snd_folder = path.join(game_folder, 'snd')
 img_folder = path.join(game_folder, "img")
@@ -102,12 +103,12 @@ class Story():
                             self.current_frame += 1
                             self.draw_story()
                             return
-                        # if event.key == pg.K_END:
-                        #     waiting = False
-                        #     self.story_loader('epilogue')
-                        #     self.draw_congrats()
-                        #     self.ded_screen("NO_PLAYER_IN_SIMULATION")
-                        #     return
+                        if event.key == pg.K_END:
+                            waiting = False
+                            self.story_loader('epilogue')
+                            self.draw_congrats()
+                            self.ded_screen("NO_PLAYER_IN_SIMULATION")
+                            return
             i += 1
             string = ""
         waiting = True
@@ -295,4 +296,4 @@ class Story():
                     if event.key == pg.K_SPACE:
                         waiting = False
                         return
-                    
+                

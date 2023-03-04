@@ -1,6 +1,7 @@
 import pygame as pg
 import sys
 import traceback
+import keyboard
 from os import path
 from settings import *
 from sprites import *
@@ -31,6 +32,8 @@ class Game:
         self.clock = pg.time.Clock()
         self.dt = self.clock.tick(FPS)/1000
         self.running = True
+
+        self.debugger = True
 
         self.level = 0
         self.all_sprites = pg.sprite.LayeredUpdates()
@@ -64,6 +67,10 @@ class Game:
     # Load every single image in one go.
     def load_images(self):
         print("loading images")
+        
+        self.zombie_stand_frame = pg.image.load(path.join(img_folder, ZOMBIE_STAND))
+        self.loading_screen()
+        
         self.player_stand_frame = pg.image.load(path.join(img_folder, PLAYER_STAND))
 
         self.player_walk_north_frame = [pg.image.load(path.join(img_folder, PLAYER_WALK_N_0)), 
@@ -91,7 +98,6 @@ class Game:
                                         pg.image.load(path.join(img_folder, LIVES1)),
                                         pg.image.load(path.join(img_folder, MORELIVES))]
 
-        self.zombie_stand_frame = pg.image.load(path.join(img_folder, ZOMBIE_STAND))
 
         self.zombie_moving_frame = [pg.image.load(path.join(img_folder, ZOMBIE_FRAME_0)),
                                     pg.image.load(path.join(img_folder, ZOMBIE_FRAME_1)),
@@ -315,6 +321,8 @@ class Game:
     def run(self):
         print("running...")
         self.playing = True
+        if self.debugger:
+            print("F12 | skip puzzle")
         while self.playing:
             # Tick clock according to how many frames per seconds
             self.dt = self.clock.tick(FPS)/1000
@@ -401,6 +409,9 @@ class Game:
                     self.pause_screen()
                 if event.key == pg.K_END:
                     self.ded_screen("GOD_IS_MERCILESS")
+                if self.debugger and event.key == pg.K_F12:
+                    self.player.collected_numbers = self.sum
+                    self.player.check_match()
 
     # Displays the loading screen
     def loading_screen(self):
@@ -412,7 +423,11 @@ class Game:
         bug_rect = bug.get_rect()
         bug_rect.center = ((WIDTH/2), (HEIGHT/2) - 50)
         self.screen.blit(bug, bug_rect)
-        self.draw_text("L O A D I N G . . .", self.undertale_font, 20, WHITE, WIDTH/2, HEIGHT/2 + 25, align="center") 
+        if self.debugger:
+            self.draw_text("D E B U G  M O D E", self.undertale_font, 20, WHITE, WIDTH/2, HEIGHT/2 + 25, align="center")
+            self.draw_text("CHECK TERMINAL FOR OPTIONS", self.undertale_font, 20, WHITE, WIDTH/2, HEIGHT/2 + 50, align="center")
+        else:
+            self.draw_text("L O A D I N G . . .", self.undertale_font, 20, WHITE, WIDTH/2, HEIGHT/2 + 25, align="center") 
         self.draw_text("Sleepy Developers (C) 2023", self.undertale_font, 15, WHITE, WIDTH/2, HEIGHT - 75, align="center") 
         self.draw_text("Discrete Structures II", self.undertale_font, 15, WHITE, WIDTH/2, HEIGHT - 55, align="center") 
         pg.display.flip()
@@ -554,10 +569,74 @@ class Game:
 
 # Starts the game
 g = Game()
-g.loading_screen()
-time.sleep(1)
+
+if g.debugger:
+    print("0 | start game")
+    print("1 | title screen")
+    print("2 | level selection")
+    print("3 | player test")
+    print("4 | show exception screen")
+    print("5 | show prologue screen")
+    print("6 | show anti cheat screen")
+    print("7 | show ded screen")
+    print("8 | show credits screen")
+    print("9 | show epilogue screen")
+
+    time_menu = time.time()
+    while time.time() - 2 < time_menu:
+        if keyboard.is_pressed("0"):
+            g.story.story_loader('prologue')
+            g.start_screen.title_loader()
+            break
+        elif keyboard.is_pressed("1"):
+            g.start_screen.title_loader()
+            break
+        elif keyboard.is_pressed("2"):
+            g.levelloader.level_loader()
+            break
+        elif keyboard.is_pressed("3"):
+            g.level = -1
+            g.load_data("lvl\\debug.tmx")
+            g.mobs = pg.sprite.Group()
+            g.turrets = pg.sprite.Group()
+            g.walls = pg.sprite.Group()
+            g.boxes = pg.sprite.Group()
+            g.sign = pg.sprite.Group()
+            g.numbers = pg.sprite.Group()
+            g.has_radio = False
+            g.tutorial_level = False
+            g.finish = pg.sprite.Group()
+            g.chest = Chest(g, 500, 500)
+            g.finish = Finish(g, 200, 200)
+            g.player = Player(g, 75, 75)
+            g.gameclock = GameClock(g, 99999)
+            g.camera = Camera(WIDTH, HEIGHT)
+            g.run()
+        elif keyboard.is_pressed("4"):
+            g.throw_exception("Exception: User asked for it.")
+            g.quit()
+        elif keyboard.is_pressed("5"):
+            g.story.story_loader('prologue')
+            g.quit()
+        elif keyboard.is_pressed("6"):
+            g.level = -1
+            g.has_radio = False
+            g.anti_cheat()
+            break
+        elif keyboard.is_pressed("7"):
+            g.level = -1
+            g.has_radio = False
+            g.ded_screen("MANUALLY_INITIATED_CRASH")
+            break
+        elif keyboard.is_pressed("8"):
+            g.story.draw_congrats()
+            g.quit()    
+            break
+        elif keyboard.is_pressed("9"):
+            g.story.story_loader('epilogue')
+            g.story.draw_congrats()
+            g.story.ded_screen("NO_PLAYER_IN_SIMULATION")
+            break
+
 g.story.story_loader('prologue')
 g.start_screen.title_loader()
-
-while g.running:
-    g.new()
