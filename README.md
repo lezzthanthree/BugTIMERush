@@ -1,8 +1,8 @@
-![Bug TIME Rush](img\title.png)
+![Bug TIME Rush](img/title.png)
 
 A game about a developer who has fallen on the digital world to solve his conflicting errors on his source code.
 
-![Fallen](img\title_bg.png)
+![Fallen](img/title_bg.png)
 
 # How The Game Works
 As the player, you have to solve some maths while dodging the bugs that you will encounter on your journey to the cruel world of development.
@@ -12,32 +12,18 @@ As the player, you have to solve some maths while dodging the bugs that you will
 Using the number tiles, you can compute your way to the objective, together with the arithmetic tiles.
 
 <center>
-<img src="img\0.png">
-<img src="img\1.png">
-<img src="img\2.png"> 
-<img src="img\3.png"> 
-<img src="img\4.png"> 
-<img src="img\5.png"> 
-<img src="img\6.png"> 
-<img src="img\7.png"> 
-<img src="img\8.png"> 
-<img src="img\9.png"> 
-<img src="img\10.png">
+<img src="img\0.png"> <img src="img\1.png"> <img src="img\2.png"> <img src="img\3.png"> <img src="img\4.png"> <img src="img\5.png"> <img src="img\6.png"> <img src="img\7.png"> <img src="img\8.png"> <img src="img\9.png"> <img src="img\10.png">
 </center>
 
 <center>
-<img src="img\+.png">
-<img src="img\-.png">
-<img src="img\X.png">
-<img src="img\D.png">
+<img src="img\+.png"> <img src="img\-.png"> <img src="img\X.png"> <img src="img\D.png">
 </center>
 
 
 Once matched, you can get the key and head your way to back to your home!
 
 <center>
-<img src="img\key_0.png">
-<img src="img\finish_o.png">
+<img src="img\key_0.png"> <img src="img\finish_o.png">
 </center>
 
 # Developing
