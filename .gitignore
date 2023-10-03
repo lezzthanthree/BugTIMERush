@@ -1,0 +1,8 @@
+**/__pycache__
+/dist
+/build
+/.vscode
+currentlvl
+main.spec
+sources.txt
+traceback.txt

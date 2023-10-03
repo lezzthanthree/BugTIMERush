@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.9" tiledversion="1.9.2" orientation="orthogonal" renderorder="right-down" width="13" height="10" tilewidth="64" tileheight="64" infinite="0" nextlayerid="3" nextobjectid="21">
+ <tileset firstgid="1" name="spritesheet_tiles" tilewidth="64" tileheight="64" spacing="10" tilecount="540" columns="27">
+  <image source="../img/spritesheet_tiles.png" width="1988" height="1470"/>
+ </tileset>
+ <tileset firstgid="541" source="../img/lvlsel_bg.tsx"/>
+ <layer id="1" name="Tile Layer 1" width="13" height="10">
+  <data encoding="csv">
+541,542,543,544,545,546,547,548,549,550,551,552,553,
+554,555,556,557,558,559,560,561,562,563,564,565,566,
+567,568,569,570,571,572,573,574,575,576,577,578,579,
+580,581,582,583,584,585,586,587,588,589,590,591,592,
+593,594,595,596,597,598,599,600,601,602,603,604,605,
+606,607,608,609,610,611,612,613,614,615,616,617,618,
+619,620,621,622,623,624,625,626,627,628,629,630,631,
+632,633,634,635,636,637,638,639,640,641,642,643,644,
+645,646,647,648,649,650,651,652,653,654,655,656,657,
+658,659,660,661,662,663,664,665,666,667,668,669,670
+</data>
+ </layer>
+ <objectgroup id="2" name="Player">
+  <object id="1" name="player" x="365.21" y="504.434"/>
+  <object id="3" name="level" x="39" y="211.667" width="98" height="87"/>
+  <object id="4" name="level" x="231" y="211.667" width="98" height="87"/>
+  <object id="5" name="level" x="464" y="213" width="98" height="87"/>
+  <object id="6" name="level" x="656.333" y="211.917" width="98" height="87"/>
+  <object id="7" name="level" x="39" y="338.667" width="98" height="87"/>
+  <object id="8" name="level" x="231" y="338.667" width="98" height="87"/>
+  <object id="9" name="level" x="464" y="340" width="98" height="87"/>
+  <object id="10" name="level" x="656" y="340" width="98" height="87"/>
+ </objectgroup>
+</map>
