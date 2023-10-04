@@ -148,6 +148,7 @@ PORTS = {
     5: pg.image.load(path.join(img_folder, "port_5.png")),
     6: pg.image.load(path.join(img_folder, "port_6.png")),
     7: pg.image.load(path.join(img_folder, "port_7.png")),
+    'credits': pg.image.load(path.join(img_folder, "port_credits.png")),
 }
 
 # SOUND

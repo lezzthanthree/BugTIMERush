@@ -140,3 +140,6 @@ class LevelSprites():
             if name == 'level':
                 levelentities.LevelTile(self.game, x, y, level)
                 level += 1
+
+        if int(self.game.main.gamehandler.savedata[0]) == 8:
+            levelentities.LevelTile(self.game, 656, 50, 'credits')

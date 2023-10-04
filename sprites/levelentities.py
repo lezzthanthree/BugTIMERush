@@ -120,18 +120,23 @@ class LevelPlayer(pg.sprite.Sprite):
     def collision_with_level(self):
         hits = pg.sprite.spritecollide(self, self.game.sprites.level_tiles, False)
         if hits:
+            if hits[0].level == 'credits':
+                self.game.choosing = False
+                self.game.main.scene.set_scene('epilogue')
+                return
+            
             if int(self.game.main.gamehandler.savedata[0]) < hits[0].level and not self.on_block:
                 self.on_block = True
                 NOPE.play()
 
             elif not self.on_block:
+                self.game.choosing = False
                 self.game.main.gamehandler.set_level(hits[0].level)
                 self.game.main.scene.set_scene('game')
                 print(f"****level {hits[0].level}****")
                 pg.mixer.music.load(GAME_BGM)
                 pg.mixer.music.play(loops=-1) 
                 self.vel *= 0
-                self.game.choosing = False
                 return
                 
         if self.on_block:
