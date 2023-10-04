@@ -32,7 +32,10 @@ class Credits():
         self.main.clock.tick(FRAMES)/1000
         for event in pg.event.get():
             if event.type == pg.QUIT:
-                self.main.quit()
+                if self.rolling:
+                    self.beat = 13
+                    self.draw_credits()
+                    self.rolling = False
             if event.type == pg.KEYDOWN:
                 if event.key == pg.K_ESCAPE:
                     self.main.quit()

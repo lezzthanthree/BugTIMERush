@@ -2,7 +2,7 @@ import pygame as pg
 from settings import *
 from assets import *
 from colors import *
-from ui import draw_text
+from ui import draw_text, quit_screen
 from scenes import title
 
 class DeadScreen():
@@ -26,7 +26,7 @@ class DeadScreen():
         self.main.clock.tick(FRAMES)/1000
         for event in pg.event.get():
             if event.type == pg.QUIT:
-                self.main.quit()
+                quit_screen(self)
             if event.type == pg.KEYDOWN:
                 if event.key == pg.K_ESCAPE:
                     self.main.scene.set_scene('title')

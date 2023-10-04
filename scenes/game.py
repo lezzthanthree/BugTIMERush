@@ -2,7 +2,7 @@ import pygame as pg
 from scripts import levelhandler, camera, hud
 from settings import *
 from assets import *
-from ui import loading_screen, pause_screen
+from ui import loading_screen, pause_screen, quit_screen
 
 class GameScreen():
     def __init__(self, main, level):
@@ -35,7 +35,7 @@ class GameScreen():
     def events(self):
         for event in pg.event.get():
             if event.type == pg.QUIT:
-                self.main.quit()
+                quit_screen(self)
             if event.type == pg.KEYDOWN:
                 if event.key == pg.K_SPACE or event.key == pg.K_ESCAPE:
                     pause_screen(self)
