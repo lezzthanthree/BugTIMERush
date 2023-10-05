@@ -35,8 +35,6 @@ class LevelPlayer(pg.sprite.Sprite):
 
         self.game = game
 
-        self.load_images()
-
         # Walking/Standing
         self.walking = False
         self.facing = "south"
@@ -45,24 +43,13 @@ class LevelPlayer(pg.sprite.Sprite):
         self.pos = vec(x, y)
 
         # Animation
-        self.image = self.stand_frame
+        self.image = PLAYER_STAND
         self.rect = self.image.get_rect()
         self.current_frame = 0
         self.last_update = 0
 
         self.on_block = False
         self.afk = False
-
-    def load_images(self):
-        self.stand_frame = PLAYER_STAND
-
-        self.walk_north_frame = PLAYER_WALK_NORTH
-
-        self.walk_south_frame = PLAYER_WALK_SOUTH
-
-        self.walk_west_frame  = PLAYER_WALK_WEST
-
-        self.walk_east_frame  = PLAYER_WALK_EAST
 
     def get_keys(self):
         self.vel = vec(0, 0)
@@ -87,27 +74,18 @@ class LevelPlayer(pg.sprite.Sprite):
                 self.last_update = now
                 self.current_frame = (self.current_frame + 1) % 4
                 if self.vel.x > 0:
-                    self.image = self.walk_east_frame [self.current_frame]
-                    self.facing = "east"
+                    self.facing = 'east'
                 elif self.vel.x < 0:
-                    self.image = self.walk_west_frame [self.current_frame]
-                    self.facing = "west"
+                    self.facing = 'west'
                 elif self.vel.y > 0:
-                    self.image = self.walk_south_frame[self.current_frame]
-                    self.facing = "south"
+                    self.facing = 'south'
                 elif self.vel.y < 0:
-                    self.image = self.walk_north_frame[self.current_frame]
-                    self.facing = "north"
+                    self.facing = 'north'
+
+                self.image = PLAYER_MOVE[self.facing][self.current_frame]
 
         if not self.walking:
-            if self.facing == "east":
-                self.image = self.walk_east_frame[0]
-            elif self.facing == "west":
-                self.image = self.walk_west_frame[0]
-            elif self.facing == "south":
-                self.image = self.walk_south_frame[0]
-            elif self.facing == "north":
-                self.image = self.walk_north_frame[0]
+            self.image = PLAYER_MOVE[self.facing][0]
 
     def check_afk(self):
         now = pg.time.get_ticks()
@@ -116,7 +94,6 @@ class LevelPlayer(pg.sprite.Sprite):
         else:
             self.afk = False
 
-    
     def collision_with_level(self):
         hits = pg.sprite.spritecollide(self, self.game.sprites.level_tiles, False)
         if hits:

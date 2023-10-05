@@ -24,22 +24,24 @@ TITLE_LOGO = [pg.image.load(path.join(img_folder, "title_1.png")),
               pg.image.load(path.join(img_folder, "title_0.png"))]
 
 PLAYER_STAND = pg.image.load(path.join(img_folder, "frisk.png"))
-PLAYER_WALK_NORTH = [pg.image.load(path.join(img_folder, "frisk_0u.png")), 
-                     pg.image.load(path.join(img_folder, "frisk_1u.png")), 
-                     pg.image.load(path.join(img_folder, "frisk_2u.png")), 
-                     pg.image.load(path.join(img_folder, "frisk_3u.png"))]
-PLAYER_WALK_SOUTH = [pg.image.load(path.join(img_folder, "frisk_0d.png")), 
-                     pg.image.load(path.join(img_folder, "frisk_1d.png")), 
-                     pg.image.load(path.join(img_folder, "frisk_2d.png")), 
-                     pg.image.load(path.join(img_folder, "frisk_3d.png"))]
-PLAYER_WALK_WEST = [pg.image.load(path.join(img_folder, "frisk_0l.png")), 
-                    pg.image.load(path.join(img_folder, "frisk_1l.png")), 
-                    pg.image.load(path.join(img_folder, "frisk_2l.png")), 
-                    pg.image.load(path.join(img_folder, "frisk_3l.png"))]
-PLAYER_WALK_EAST = [pg.image.load(path.join(img_folder, "frisk_0r.png")), 
-                    pg.image.load(path.join(img_folder, "frisk_1r.png")), 
-                    pg.image.load(path.join(img_folder, "frisk_2r.png")), 
-                    pg.image.load(path.join(img_folder, "frisk_3r.png"))]
+PLAYER_MOVE = {
+    'north':   [pg.image.load(path.join(img_folder, "frisk_0u.png")), 
+                pg.image.load(path.join(img_folder, "frisk_1u.png")), 
+                pg.image.load(path.join(img_folder, "frisk_2u.png")), 
+                pg.image.load(path.join(img_folder, "frisk_3u.png"))],
+    'south':   [pg.image.load(path.join(img_folder, "frisk_0d.png")), 
+                pg.image.load(path.join(img_folder, "frisk_1d.png")), 
+                pg.image.load(path.join(img_folder, "frisk_2d.png")), 
+                pg.image.load(path.join(img_folder, "frisk_3d.png"))],
+    'west':    [pg.image.load(path.join(img_folder, "frisk_0l.png")), 
+                pg.image.load(path.join(img_folder, "frisk_1l.png")), 
+                pg.image.load(path.join(img_folder, "frisk_2l.png")), 
+                pg.image.load(path.join(img_folder, "frisk_3l.png"))],
+    'east':    [pg.image.load(path.join(img_folder, "frisk_0r.png")), 
+                pg.image.load(path.join(img_folder, "frisk_1r.png")), 
+                pg.image.load(path.join(img_folder, "frisk_2r.png")), 
+                pg.image.load(path.join(img_folder, "frisk_3r.png"))]
+}
 
 PLAYER_LIVES = [pg.image.load(path.join(img_folder, "morelives.png")),
                 pg.image.load(path.join(img_folder, "1lives.png")),
