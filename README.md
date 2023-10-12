@@ -24,7 +24,7 @@ Once matched, you can get the key and head your way to back to your home!
 # Developing
 1. Fork this repository and clone it using git.
 ```
-git clone https://github.com/<yourusername>/BugTIMERush.git`
+git clone https://github.com/<yourusername>/BugTIMERush.git
 ```
 2. Head to your local repository and install the needed requirements for development.
 ```
@@ -48,7 +48,8 @@ This game is also heavily inspired by UNDERTALE. Thank you, Toby Fox, for your w
   * [Bug Sprite](https://opengameart.org/content/super-dead-gunner-spidrbot)
   * [Teleporter Sprite](https://opengameart.org/content/teleporter-circle)
   * [Tile Set](https://opengameart.org/content/warped-top-down-tech-lab?utm_source=canva&utm_medium=iframely)
-* [Trevor Pupkin](https://trevor-pupkin.itch.io/) for some of the [sprites](https://trevor-pupkin.itch.io/tech-dungeon-roguelite)
+* [Trevor Pupkin](https://trevor-pupkin.itch.io/) for [level sprites](https://trevor-pupkin.itch.io/tech-dungeon-roguelite)
+* Aveontrainer for the [scientist sprites](https://www.deviantart.com/aveontrainer/art/Scientist-823793726)
 
 ---
 [<img src="img\sp.png" alt="smilie pop" width="150"/>](https://www.youtube.com/c/SmiliePop)[<img src="img\lezzthanthree.png" alt="lezzthanthree" width="150"/>](https://reddit.com/user/lezzthanthree)
