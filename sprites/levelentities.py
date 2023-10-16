@@ -62,6 +62,17 @@ class LevelPlayer(pg.sprite.Sprite):
             self.vel.y = -self.speed
         if keys[pg.K_DOWN] or keys[pg.K_s]:
             self.vel.y = self.speed
+    
+    def check_position(self):
+        if self.pos.x < -100:
+            self.pos.x = 880
+        if self.pos.x > 900:
+            self.pos.x = -80
+        if self.pos.y < -100:
+            self.pos.y = 720
+        if self.pos.y > 740:
+            self.pos.y = -80
+        
 
     def animate(self):
         now = pg.time.get_ticks()
@@ -132,6 +143,7 @@ class LevelPlayer(pg.sprite.Sprite):
 
         self.collision_with_level()
         self.check_afk()
+        self.check_position()
 
 class LevelTile(pg.sprite.Sprite):
     def __init__(self, game, x, y, level):
