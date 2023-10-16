@@ -81,41 +81,42 @@ class GameSprites():
 
     def create_sprites(self):
         box_id = 0
-        tip_id = 0
+        tip_id = 0 
         for tile_object in self.map.tmxdata.objects:
             name = tile_object.name
             x = tile_object.x
             y = tile_object.y
 
-            if name == 'player':
-                self.player = player.Player(self.game, x, y)
-            if name == 'chest':
-                self.chest = goals.Chest(self.game, x, y)
-            if name == 'finish':
-                self.finish = goals.Finish(self.game, x, y)
-            if name == 'wall':
-                obstacles.Walls(self.game, x, y, tile_object.width, tile_object.height)
-            if name == 'zombie':
-                mobs.Zombie(self.game, x, y)
-            if name == 'zombiex':
-                mobs.LinearZombie(self.game, x, y, 'x')
-            if name == 'zombiey':
-                mobs.LinearZombie(self.game, x, y, 'y')
-            if name == 'turret':
-                mobs.Turret(self.game, x, y)
+            match (name):
+                case 'player':
+                    self.player = player.Player(self.game, x, y)
+                case 'chest':
+                    self.chest = goals.Chest(self.game, x, y)
+                case 'finish':
+                    self.finish = goals.Finish(self.game, x, y)
+                case 'wall':
+                    obstacles.Walls(self.game, x, y, tile_object.width, tile_object.height)
+                case 'zombie':
+                    mobs.Zombie(self.game, x, y)
+                case 'zombiex':
+                    mobs.LinearZombie(self.game, x, y, 'x')
+                case 'zombiey':
+                    mobs.LinearZombie(self.game, x, y, 'y')
+                case 'turret':
+                    mobs.Turret(self.game, x, y)
+                case 'block':
+                    obstacles.Box(self.game, x, y, box_id)
+                    box_id += 1
+                case 'flashlight':
+                    self.flashlight = obstacles.Flashlight(self.game)
+                case 'tutorial':
+                    tip.Tip(self.game, x, y, tip_id)
+                    tip_id += 1
+                    self.has_tips = True
             if str(name).isnumeric():
                 collectibles.Numbers(self.game, x, y, int(name))
             if name in POSSIBLE_SYMBOLS:
                 collectibles.Signs(self.game, x, y, name)
-            if name == 'block':
-                obstacles.Box(self.game, x, y, box_id)
-                box_id += 1
-            if name == 'flashlight':
-                self.flashlight = obstacles.Flashlight(self.game)
-            if name == 'tutorial':
-                tip.Tip(self.game, x, y, tip_id)
-                tip_id += 1
-                self.has_tips = True
 
         if self.has_tips:
             self.tip_text = tip.TipText(self.game)
@@ -135,11 +136,12 @@ class LevelSprites():
             x = tile_object.x
             y = tile_object.y
 
-            if name == 'player':
-                self.player = levelentities.LevelPlayer(self.game, x, y)
-            if name == 'level':
-                levelentities.LevelTile(self.game, x, y, level)
-                level += 1
+            match (name):
+                case 'player':
+                    self.player = levelentities.LevelPlayer(self.game, x, y)
+                case 'level':
+                    levelentities.LevelTile(self.game, x, y, level)
+                    level += 1
 
         if int(self.game.main.gamehandler.savedata[0]) == 8:
             levelentities.LevelTile(self.game, 656, 50, 'credits')
