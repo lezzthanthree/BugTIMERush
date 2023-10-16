@@ -28,15 +28,13 @@ class Game:
         sys.exit()
 
 if __name__ == "__main__":
-    g = Game()
-
     try:
+        g = Game()
         g.start()
     except Exception as e:
         import ctypes
         import traceback
         ctypes.windll.user32.MessageBoxW(0, f"An exception has occured. \n\n{str(e)}\n\nCheck the traceback.txt for more details.", "Error", 0x10)
-        # {repr(e)}\n
         with open('traceback.txt', 'w+') as f:
             traceback.print_exc(file=f)
 
