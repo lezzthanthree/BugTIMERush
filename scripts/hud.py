@@ -30,7 +30,7 @@ class HUD():
             hud = PLAYER_LIVES[2]
         if self.sprites.player.lives == 1:
             hud = PLAYER_LIVES[1]
-        if self.sprites.player.lives == 0:
+        if self.sprites.player.lives <= 0 or self.sprites.player.lives > 3:
             hud = PLAYER_LIVES[0]
 
         hud_rect = hud.get_rect()
