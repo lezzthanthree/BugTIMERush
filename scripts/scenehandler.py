@@ -1,5 +1,6 @@
 import pygame as pg
 from scenes import game, story, title, level, deadscreen, credits, gameover
+from test_assets import fonttest, soundtest, spritetest, scenetest
 
 class Scene():
     def __init__(self, main, scene = None):
@@ -33,5 +34,10 @@ class Scene():
             case 'gameover':
                 gameover.GameOver(self.main, "NO_PLAYER_IN_SIMULATION")
                 return
+            case 'test':
+                fonttest.TestFont(self.main)
+                spritetest.TestSprite(self.main)
+                soundtest.TestSound(self.main)
+                scenetest.TestScene(self.main)
             case _:
                 raise Exception(f"SceneException: '{self.__scene}' does not exist.")
