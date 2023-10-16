@@ -4,6 +4,7 @@ from settings import *
 from ui import draw_text
 from colors import *
 from scripts import gamedata
+from errors import AntiCheatException
 
 vec = pg.math.Vector2
 
@@ -122,7 +123,7 @@ class Player(pg.sprite.Sprite):
             self.game.main.scene.set_scene('dead')
             self.game.playing = False
         if self.lives > 3 or self.lives < 0:
-            raise Exception("AntiCheatException: Player has more lives to spend")
+            raise AntiCheatException("Player has more lives to spend")
         
     def collision_on_finish(self):
         hits = pg.sprite.collide_rect(self, self.game.sprites.finish)
@@ -146,9 +147,13 @@ class Player(pg.sprite.Sprite):
     def check_vulnerability(self):
         now = pg.time.get_ticks()
         if not self.vulnerable:
+            self.image.set_alpha(100)
             if now - self.last_invulnerable_update > 2000:
                 self.vulnerable = True
                 print("now vulnerable")
+
+        if self.vulnerable:
+            self.image.set_alpha(255)
 
     def update(self):
         self.check_lives()

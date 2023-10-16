@@ -1,4 +1,5 @@
 from os import path
+from errors import InvalidLevelSave
 
 game_folder = ""
 
@@ -8,6 +9,7 @@ def get_save_data():
         with open(path.join(game_folder, 'currentlvl'), 'rt') as f:
             for line in f:
                 savedata.append(line.strip())
+        check(savedata)
         f.close()
     else:
         f = open(path.join(game_folder, 'currentlvl'), "w+")
@@ -18,7 +20,11 @@ def get_save_data():
     return savedata
 
 def save(save):
-    f = open(path.join(game_folder, 'currentlvl'), "w+")
+    f = open(path.join(game_folder, 'currentlvl'), "w")
     for data in save:
         f.write(f"{data}\n")
     f.close()
+
+def check(save):
+    if not save[0].isnumeric():
+        raise InvalidLevelSave

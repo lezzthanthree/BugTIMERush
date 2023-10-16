@@ -1,6 +1,7 @@
 import pygame as pg
 from scenes import game, story, title, level, deadscreen, credits, gameover
 from test_assets import fonttest, soundtest, spritetest, scenetest
+from errors import SceneException
 
 class Scene():
     def __init__(self, main, scene = None):
@@ -40,4 +41,4 @@ class Scene():
                 soundtest.TestSound(self.main)
                 scenetest.TestScene(self.main)
             case _:
-                raise Exception(f"SceneException: '{self.__scene}' does not exist.")
+                raise SceneException(self.__scene)
